@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviation Ops Software | Real-Time Ground Operations</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Reduce Motion Toggle -->
+    <button id="motion-toggle" class="motion-toggle" aria-label="Toggle animations">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+        </svg>
+    </button>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 2L4 16h8v12h8V16h8L16 2z" fill="currentColor"/>
+                    <circle cx="16" cy="26" r="2" fill="var(--cyan)"/>
+                </svg>
+                <span>OPS<span class="nav-accent">CORE</span></span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#ramp-report" class="nav-link">RAMP</a></li>
+                <li><a href="#wheelchair-requests" class="nav-link">Requests</a></li>
+                <li><a href="#wheelchair-monitoring" class="nav-link">Monitor</a></li>
+                <li><a href="#avatars-kiosk" class="nav-link">Avatars</a></li>
+            </ul>
+            <button class="nav-cta">Request Demo</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <canvas id="three-canvas"></canvas>
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-chips">
+                <span class="chip" data-delay="0">Real-time</span>
+                <span class="chip" data-delay="100">SLA Alerts</span>
+                <span class="chip" data-delay="200">Dispatch</span>
+                <span class="chip" data-delay="300">Dashboards</span>
+            </div>
+            <h1 class="hero-headline">
+                <span class="headline-line">Aviation Ops Software,</span>
+                <span class="headline-line">Reimagined.</span>
+            </h1>
+            <p class="hero-subheadline">Four modules built for airlines and ground handling teams: ramp reporting, wheelchair dispatch, real-time monitoring, and avatar-driven loyalty promotion.</p>
+            <div class="hero-cta-group">
+                <button class="btn-primary">Request a Demo</button>
+                <button class="btn-secondary" data-scroll-to="modules-container">Explore the 4 Modules</button>
+            </div>
+        </div>
+        <div class="hero-scan-line"></div>
+    </section>
+
+    <!-- Modules Scroll Story Section -->
+    <section id="modules-container" class="modules-scroll-story">
+        <div class="modules-sidebar">
+            <div class="modules-progress">
+                <div class="progress-item active" data-module="ramp-report">
+                    <span class="progress-dot"></span>
+                    <span class="progress-label">RAMP Report</span>
+                </div>
+                <div class="progress-item" data-module="wheelchair-requests">
+                    <span class="progress-dot"></span>
+                    <span class="progress-label">Wheelchair Requests</span>
+                </div>
+                <div class="progress-item" data-module="wheelchair-monitoring">
+                    <span class="progress-dot"></span>
+                    <span class="progress-label">Real-Time Monitoring</span>
+                </div>
+                <div class="progress-item" data-module="avatars-kiosk">
+                    <span class="progress-dot"></span>
+                    <span class="progress-label">Avatars Kiosk</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="modules-showcase">
+            <!-- Module 1: RAMP Report -->
+            <div class="module-panel" id="ramp-report" data-module="ramp-report">
+                <div class="module-content">
+                    <div class="module-header">
+                        <span class="module-label">Module 01</span>
+                        <h2 class="module-title">RAMP Report</h2>
+                        <p class="module-subtitle">Interactive ramp operations reporting with next-gen dashboards.</p>
+                    </div>
+                    <ul class="module-benefits">
+                        <li>Real-time turnaround tracking with SLA alerts</li>
+                        <li>Multi-airline flight visualization and filtering</li>
+                        <li>Export-ready compliance reports in seconds</li>
+                    </ul>
+                    <button class="btn-module">Explore Module</button>
+                </div>
+                <div class="module-demo">
+                    <div class="demo-ramp">
+                        <canvas id="ramp-3d-canvas"></canvas>
+                        <div class="ramp-ui">
+                            <div class="ramp-filters">
+                                <button class="filter-btn active" data-filter="all">All Flights</button>
+                                <button class="filter-btn" data-filter="airline">By Airline</button>
+                                <button class="filter-btn" data-filter="gate">By Gate</button>
+                                <button class="filter-btn" data-filter="status">By Status</button>
+                            </div>
+                            <div class="ramp-cards">
+                                <div class="flight-card">
+                                    <div class="card-header">
+                                        <span class="flight-number">AA2847</span>
+                                        <span class="status-badge on-time">On Time</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="info-row">
+                                            <span class="label">Gate</span>
+                                            <span class="value">B24</span>
+                                        </div>
+                                        <div class="info-row">
+                                            <span class="label">Turnaround</span>
+                                            <span class="value">45min</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-progress">
+                                        <div class="progress-bar" style="width: 68%"></div>
+                                    </div>
+                                </div>
+                                <div class="flight-card">
+                                    <div class="card-header">
+                                        <span class="flight-number">DL1024</span>
+                                        <span class="status-badge warning">Delayed</span>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="info-row">
+                                            <span class="label">Gate</span>
+                                            <span class="value">C12</span>
+                                        </div>
+                                        <div class="info-row">
+                                            <span class="label">Turnaround</span>
+                                            <span class="value">52min</span>
+                                        </div>
+                                    </div>
+                                    <div class="card-progress">
+                                        <div class="progress-bar warning" style="width: 82%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="export-btn">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Export Dashboard
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 2: Wheelchair Requests -->
+            <div class="module-panel" id="wheelchair-requests" data-module="wheelchair-requests">
+                <div class="module-content">
+                    <div class="module-header">
+                        <span class="module-label">Module 02</span>
+                        <h2 class="module-title">Wheelchair Requests</h2>
+                        <p class="module-subtitle">Capture and dispatch wheelchair requests instantly across teams.</p>
+                    </div>
+                    <ul class="module-benefits">
+                        <li>Mobile-first request creation in under 30 seconds</li>
+                        <li>Instant dispatch with automated routing</li>
+                        <li>Live status tracking from request to completion</li>
+                    </ul>
+                    <button class="btn-module">Explore Module</button>
+                </div>
+                <div class="module-demo">
+                    <div class="demo-wheelchair">
+                        <div class="stepper-container">
+                            <div class="stepper-header">
+                                <div class="step active" data-step="1">
+                                    <span class="step-number">1</span>
+                                    <span class="step-label">Passenger</span>
+                                </div>
+                                <div class="step" data-step="2">
+                                    <span class="step-number">2</span>
+                                    <span class="step-label">Type</span>
+                                </div>
+                                <div class="step" data-step="3">
+                                    <span class="step-number">3</span>
+                                    <span class="step-label">Pickup</span>
+                                </div>
+                                <div class="step" data-step="4">
+                                    <span class="step-number">4</span>
+                                    <span class="step-label">Confirm</span>
+                                </div>
+                            </div>
+                            <div class="stepper-content">
+                                <div class="step-panel active" data-step="1">
+                                    <input type="text" placeholder="Passenger Name" class="step-input" value="Sarah Mitchell">
+                                    <input type="text" placeholder="Flight Number" class="step-input" value="UA456">
+                                </div>
+                                <div class="step-panel" data-step="2">
+                                    <div class="type-options">
+                                        <button class="type-btn active">Standard</button>
+                                        <button class="type-btn">Electric</button>
+                                        <button class="type-btn">Stretcher</button>
+                                    </div>
+                                </div>
+                                <div class="step-panel" data-step="3">
+                                    <select class="step-select">
+                                        <option>Gate B24</option>
+                                        <option>Gate C12</option>
+                                        <option>Baggage Claim</option>
+                                    </select>
+                                </div>
+                                <div class="step-panel" data-step="4">
+                                    <div class="confirm-details">
+                                        <p><strong>Passenger:</strong> Sarah Mitchell</p>
+                                        <p><strong>Flight:</strong> UA456</p>
+                                        <p><strong>Type:</strong> Standard</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="request-cards">
+                            <div class="request-card">
+                                <div class="request-header">
+                                    <span class="request-id">#WC-2847</span>
+                                    <span class="status-chip new">New</span>
+                                </div>
+                                <p class="request-passenger">John Anderson - AA2847</p>
+                                <div class="request-actions">
+                                    <button class="assign-btn">Assign</button>
+                                </div>
+                            </div>
+                            <div class="request-card">
+                                <div class="request-header">
+                                    <span class="request-id">#WC-2846</span>
+                                    <span class="status-chip assigned">Assigned</span>
+                                </div>
+                                <p class="request-passenger">Maria Garcia - DL1024</p>
+                                <div class="pulse-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 3: Real-Time Monitoring -->
+            <div class="module-panel" id="wheelchair-monitoring" data-module="wheelchair-monitoring">
+                <div class="module-content">
+                    <div class="module-header">
+                        <span class="module-label">Module 03</span>
+                        <h2 class="module-title">Wheelchair Monitoring</h2>
+                        <p class="module-subtitle">Monitor wheelchair services live with timers, heatmaps, and SLA alerts.</p>
+                    </div>
+                    <ul class="module-benefits">
+                        <li>Mission-control view of all active services</li>
+                        <li>Automatic SLA warnings and critical alerts</li>
+                        <li>Performance heatmaps and analytics</li>
+                    </ul>
+                    <button class="btn-module">Explore Module</button>
+                </div>
+                <div class="module-demo">
+                    <div class="demo-monitoring">
+                        <div class="monitoring-header">
+                            <h3>Live Service Board</h3>
+                            <div class="monitoring-stats">
+                                <span class="stat-item">Active: <strong id="active-count">12</strong></span>
+                                <span class="stat-item">Alerts: <strong id="alert-count">2</strong></span>
+                            </div>
+                        </div>
+                        <div class="live-board">
+                            <div class="board-header">
+                                <span>ID</span>
+                                <span>Location</span>
+                                <span>Timer</span>
+                                <span>Status</span>
+                                <span>SLA</span>
+                            </div>
+                            <div class="board-row" data-sla="ok">
+                                <span class="service-id">WC-2851</span>
+                                <span class="location">Gate B24</span>
+                                <span class="timer" data-elapsed="245">04:05</span>
+                                <span class="service-status en-route">En Route</span>
+                                <span class="sla-badge ok">OK</span>
+                            </div>
+                            <div class="board-row" data-sla="warning">
+                                <span class="service-id">WC-2849</span>
+                                <span class="location">Gate C12</span>
+                                <span class="timer" data-elapsed="540">09:00</span>
+                                <span class="service-status assigned">Assigned</span>
+                                <span class="sla-badge warning">Warning</span>
+                            </div>
+                            <div class="board-row" data-sla="critical">
+                                <span class="service-id">WC-2847</span>
+                                <span class="location">Baggage A</span>
+                                <span class="timer" data-elapsed="720">12:00</span>
+                                <span class="service-status assigned">Assigned</span>
+                                <span class="sla-badge critical">Critical</span>
+                            </div>
+                            <div class="board-row" data-sla="ok">
+                                <span class="service-id">WC-2850</span>
+                                <span class="location">Gate D8</span>
+                                <span class="timer" data-elapsed="180">03:00</span>
+                                <span class="service-status en-route">En Route</span>
+                                <span class="sla-badge ok">OK</span>
+                            </div>
+                        </div>
+                        <div class="heatmap-viz">
+                            <div class="heatmap-grid">
+                                <div class="heat-cell" data-intensity="low"></div>
+                                <div class="heat-cell" data-intensity="medium"></div>
+                                <div class="heat-cell" data-intensity="low"></div>
+                                <div class="heat-cell" data-intensity="high"></div>
+                                <div class="heat-cell" data-intensity="medium"></div>
+                                <div class="heat-cell" data-intensity="low"></div>
+                                <div class="heat-cell" data-intensity="critical"></div>
+                                <div class="heat-cell" data-intensity="medium"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Module 4: Avatars Kiosk -->
+            <div class="module-panel" id="avatars-kiosk" data-module="avatars-kiosk">
+                <div class="module-content">
+                    <div class="module-header">
+                        <span class="module-label">Module 04</span>
+                        <h2 class="module-title">Avatars in a Digital Kiosk</h2>
+                        <p class="module-subtitle">On-brand avatars that promote airline frequent flyer programs and educate passengers.</p>
+                    </div>
+                    <ul class="module-benefits">
+                        <li>AI-powered conversations with brand personality</li>
+                        <li>Automated loyalty program promotion and enrollment</li>
+                        <li>24/7 passenger assistance and information</li>
+                    </ul>
+                    <button class="btn-module">Explore Module</button>
+                </div>
+                <div class="module-demo">
+                    <div class="demo-kiosk">
+                        <div class="kiosk-frame">
+                            <video class="kiosk-video" autoplay muted loop playsinline>
+                                <source src="assets/kiosk.mp4" type="video/mp4">
+                            </video>
+                            <div class="kiosk-overlay">
+                                <div class="avatar-pod">
+                                    <div class="avatar-circle">
+                                        <div class="avatar-pulse"></div>
+                                    </div>
+                                </div>
+                                <div class="chat-bubbles">
+                                    <div class="chat-bubble">Welcome! How can I help you today?</div>
+                                    <div class="chat-bubble">I'd like to learn about your rewards program</div>
+                                    <div class="chat-bubble">Great! Let me show you our benefits...</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="promo-cards">
+                            <div class="promo-card">
+                                <div class="promo-icon">✈️</div>
+                                <h4>Earn Miles</h4>
+                                <p>2x on all flights</p>
+                            </div>
+                            <div class="promo-card">
+                                <div class="promo-icon">⬆️</div>
+                                <h4>Upgrades</h4>
+                                <p>Free class upgrades</p>
+                            </div>
+                            <div class="promo-card">
+                                <div class="promo-icon">🛋️</div>
+                                <h4>Lounge Access</h4>
+                                <p>Premium lounges</p>
+                            </div>
+                            <div class="promo-card">
+                                <div class="promo-icon">🤝</div>
+                                <h4>Partners</h4>
+                                <p>Global rewards</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Strip -->
+    <section id="metrics" class="metrics-section">
+        <div class="metrics-container">
+            <div class="metric-card">
+                <div class="metric-value" data-target="247">0</div>
+                <div class="metric-label">Avg Response Time (sec)</div>
+                <canvas class="sparkline" width="100" height="30"></canvas>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" data-target="1847">0</div>
+                <div class="metric-label">Services Today</div>
+                <canvas class="sparkline" width="100" height="30"></canvas>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" data-target="98.7">0</div>
+                <div class="metric-label">SLA Compliance %</div>
+                <canvas class="sparkline" width="100" height="30"></canvas>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" data-target="42">0</div>
+                <div class="metric-label">Active Gates</div>
+                <canvas class="sparkline" width="100" height="30"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & Integrations -->
+    <section id="trust" class="trust-section">
+        <h2 class="section-title">Enterprise-Grade Security & Integrations</h2>
+        <div class="trust-container">
+            <div class="badges-grid">
+                <div class="badge-item">
+                    <div class="badge-icon">📋</div>
+                    <h3>Audit Logs</h3>
+                    <p>Complete activity tracking</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">🔐</div>
+                    <h3>Role-Based Access</h3>
+                    <p>Granular permissions</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">☁️</div>
+                    <h3>Cloud/Hybrid Ready</h3>
+                    <p>Deploy anywhere</p>
+                </div>
+                <div class="badge-item">
+                    <div class="badge-icon">🛡️</div>
+                    <h3>Secure by Design</h3>
+                    <p>SOC 2 compliant</p>
+                </div>
+            </div>
+            <div class="integrations-grid">
+                <div class="integration-item">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="8" fill="var(--glass-bg)"/>
+                        <text x="20" y="26" text-anchor="middle" fill="var(--cyan)" font-size="16" font-weight="bold">API</text>
+                    </svg>
+                    <span>REST API</span>
+                </div>
+                <div class="integration-item">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="8" fill="var(--glass-bg)"/>
+                        <text x="20" y="26" text-anchor="middle" fill="var(--cyan)" font-size="16" font-weight="bold">BI</text>
+                    </svg>
+                    <span>BI Tools</span>
+                </div>
+                <div class="integration-item">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="8" fill="var(--glass-bg)"/>
+                        <text x="20" y="26" text-anchor="middle" fill="var(--cyan)" font-size="14" font-weight="bold">GWS</text>
+                    </svg>
+                    <span>Google Workspace</span>
+                </div>
+                <div class="integration-item">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                        <rect width="40" height="40" rx="8" fill="var(--glass-bg)"/>
+                        <path d="M20 10 L30 20 L20 30 L10 20 Z" fill="var(--cyan)"/>
+                    </svg>
+                    <span>Webhooks</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="final-cta" class="cta-section">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Transform Ground Operations?</h2>
+            <p class="cta-subtitle">Join leading airlines and ground handlers using OpsCore to deliver exceptional service.</p>
+            <form class="cta-form">
+                <div class="form-row">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" placeholder="Company" required>
+                    <select required>
+                        <option value="">Select Role</option>
+                        <option value="ops">Operations Manager</option>
+                        <option value="it">IT Director</option>
+                        <option value="exec">Executive</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <textarea placeholder="Tell us about your needs" rows="4"></textarea>
+                <button type="submit" class="btn-submit">Request Demo</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                    <path d="M16 2L4 16h8v12h8V16h8L16 2z" fill="currentColor"/>
+                    <circle cx="16" cy="26" r="2" fill="var(--cyan)"/>
+                </svg>
+                <span>OpsCore</span>
+            </div>
+            <p class="footer-tagline">Powering the future of aviation ground operations</p>
+            <div class="footer-links">
+                <a href="#privacy">Privacy</a>
+                <a href="#terms">Terms</a>
+                <a href="#security">Security</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p class="footer-copyright">&copy; 2026 OpsCore Aviation Systems. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
